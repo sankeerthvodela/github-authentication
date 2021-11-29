@@ -1,3 +1,3 @@
 # github-authentication
 
-# Copy the files into www folder and added sql query in the folder.
+# Install Wamp server and copy the files into www folder in wamp server.
