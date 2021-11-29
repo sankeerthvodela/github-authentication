@@ -14,7 +14,6 @@ if(isset($accessToken)){
         $gitUserData['username'] = !empty($gitUser->login)?$gitUser->login:'';
         $gitUserData['email'] = !empty($gitUser->email)?$gitUser->email:'';
         $gitUserData['location'] = !empty($gitUser->location)?$gitUser->location:'';
-        $gitUserData['picture'] = !empty($gitUser->avatar_url)?$gitUser->avatar_url:'';
         $gitUserData['link'] = !empty($gitUser->html_url)?$gitUser->html_url:'';
         
         $userData = $user->checkUser($gitUserData);
@@ -22,14 +21,12 @@ if(isset($accessToken)){
         $_SESSION['userData'] = $userData;
         
         $output  = '<h2>Github Profile Details</h2>';
-        $output .= '<img src="'.$userData['picture'].'" />';
         $output .= '<p>ID: '.$userData['oauth_uid'].'</p>';
         $output .= '<p>Name: '.$userData['name'].'</p>';
         $output .= '<p>Login Username: '.$userData['username'].'</p>';
         $output .= '<p>Email: '.$userData['email'].'</p>';
         $output .= '<p>Location: '.$userData['location'].'</p>';
-        $output .= '<p>Profile Link :  <a href="'.$userData['link'].'" target="_blank">Click to visit GitHub page</a></p>';
-        $output .= '<p>Logout from <a href="logout.php">GitHub</a></p>'; 
+        $output .= '<p>Logout from <a href="logout.php">GitHub</a></p>';
     }else{
         $output = '<h3 style="color:red">Some problem occurred, please try again.</h3>';
     }
@@ -77,15 +74,7 @@ $( document ).ready(function() {
         url: "https://api.github.com/users/sankeerthvodela/repos",
         dataType: "json",
         success: function(result) {
-            for(var i in result ) {
-                $("#repo_list").append(
-                    "<li><a href='" + result[i].html_url + "' target='_blank'>" +
-                    result[i].name + "</a></li>"
-                );
-                console.log("i: " + i);
-            }
             console.log(result);
-            $("#repo_count").append("Total Repos: " + result.length);
         }
     });
 
