@@ -1,3 +1,8 @@
 # github-authentication
 
-# Install Wamp server and copy the files into www folder in wamp server.
+# Install Wamp server.
+
+
+# Create a new folder github_authentication inside www folder and copy the files.
+
+# Copy and paste the url in browser  (http://localhost/github_authentication
